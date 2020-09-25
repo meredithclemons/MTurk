@@ -1,0 +1,97 @@
+<!-- For help on using this template, see the blog post: https://blog.mturk.com/editing-the-survey-link-project-template-in-the-ui-7c75285105fb#.py7towsdx --><!-- HIT template: SurveyLink-v3.0 --><!-- The following snippet enables the 'responsive' behavior on smaller screens -->
+<meta content="width=device-width,initial-scale=1" name="viewport" />
+<section class="container" id="SurveyLink"><!-- Instructions -->
+<div class="row">
+<div class="col-xs-12 col-md-12">
+<div class="panel panel-primary"><!-- WARNING: the ids "collapseTrigger" and "instructionBody" are being used to enable expand/collapse feature --><a class="panel-heading" href="javascript:void(0);" id="collapseTrigger"><strong>Survey Link Instructions</strong> <span class="collapse-text">(Click to expand)</span> </a>
+<div class="panel-body" id="instructionBody">
+<p>We are conducting a six month, longitudinal study about climate change and storytelling. Participants must have a <strong>functioning webcam</strong> to participate. Participants will have a maximum&nbsp;</p>
+
+<p>The <strong>initial interaction</strong> should take roughly 45 minutes to complete. You will complete a brief survey, watch a video clip while being recorded through your webcam, and then complete another survey.&nbsp;Videos will be analyzed via a facial expression analysis software. If you are uncomfortable being recorded, please do not accept the HIT.&nbsp;</p>
+
+<p>Following this initial interaction, we will contact you between 3-5 times over the next six months via MTurk for brief <strong>follow up surveys</strong>. These will only be survey questions and should take no more than 10 minutes. You will be compensated X for each interaction, and offered additional bonus payment of X if you complete surveys after the 3 month mark.&nbsp;</p>
+
+<p>The link to the website is: <a href="https://research.theclimatemedialab.org">research.theclimatemedialab.org&nbsp;</a></p>
+
+<p><strong>Make sure to leave this window open as you complete the survey. </strong> When you are finished, you will return to this page to paste the code into the box.</p>
+
+<p class="well well-sm"><strong><mark>Template note for Requesters</mark></strong> - To verify that Workers actually complete your survey, require each Worker to enter a <strong>unique</strong> survey completion code to your HIT. Consult with your survey service provider on how to generate this code at the end of your survey.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<div style="font-family:sans-serif;margin-left:10%;margin-right:10%;"><!-- THIS IS THE HTML FORM NEEDED TO BE ABLE TO SUBMIT THE HIT -->
+<form action="https://www.mturk.com/mturk/externalSubmit" id="mturk_form" method="post" name="mturk_form">
+<p style="text-align: center;"><strong><span id="link">The password will appear here once HIT is accepted. If it does not, make sure javascript is enabled in your browser.</span></strong></p>
+
+<p style="text-align:center;">After completing the survey, enter the completion code from last page here:<br />
+<input id="complete" name="complete" type="text" /></p>
+
+<p><input id="submitButton" type="submit" value="Submit" /></p>
+</form>
+<script type="text/javascript">
+              /* RETRIEVE URL */
+              var fullurl=new String();
+              /* THIS IS THE LINE TO CAPTURE THE ACTUAL URL: */
+              var fullurl=TESTPASSWORD;
+  
+              /* FUNCTION TO EXTRACT A URL PARAMETER (FROM: https://s3.amazonaws.com/mturk-public/externalHIT_v1.js) */
+              function turkGetParam( name ) { 
+                  var regexS = "[\?&]"+name+"=([^&#]*)"; 
+                  var regex = new RegExp( regexS ); 
+                  var tmpURL = fullurl; 
+                  var results = regex.exec( tmpURL ); 
+                  if( results == null ) { 
+                    return ""; 
+                  } else { 
+                    return results[1];    
+                  } 
+              }
+              
+              /* ASSIGNS THE URL PARAMETERS TO JAVASCRIPT VARIABLES */
+              var assign = turkGetParam('assignmentId');
+              var hit = turkGetParam('hitId');
+              var worker = turkGetParam('workerId');
+              
+              /* THIS PART BUILDS THE LINK FOR AN ACCEPTED ASSIGNMENT */
+              if(assign=="ASSIGNMENT_ID_NOT_AVAILABLE") {
+                  /* THIS IS A MESSAGE ABOUT THE HIT BEING IN PREVIEW MODE (SO IT WON'T SHOW THE LINK) */
+                  document.getElementById('link').innerHTML = "<p style='font-weight:bold;text-align:center;'>Link will become available once you accept the HIT.</p>";
+              } else {
+                  /* CONSTRUCT THE SURVEY LINK WITH THE EMBEDDED VALUES: */
+                  var surveylink = new String("http://www.nytimes.com"
+                                   + "?assignmentId=" + assign
+                                   + "&hitId=" + hit
+                                   + "&workerId=" + worker
+                                   );
+                  /* DISPLAY THE LINK */
+                  document.getElementById('link').innerHTML = "<p><a href='" + surveylink + "' target='_blank'>Complete this survey</a></p>";
+              }
+            </script></div>
+<link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" integrity="sha384-IS73LIqjtYesmURkDE9MXKbXqYA8rvKEp/ghicjem7Vc3mGRdQRptJSz60tvrB6+" rel="stylesheet" />
+<style type="text/css">#collapseTrigger{
+  color:#fff;
+  display: block;
+  text-decoration: none;
+}
+#submitButton{
+  white-space: normal;
+}
+.image{
+  margin-bottom: 15px; 
+}
+/* CSS for breaking long words/urls */
+.dont-break-out {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -ms-word-break: break-all;
+  word-break: break-all;
+  word-break: break-word;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+</style>
